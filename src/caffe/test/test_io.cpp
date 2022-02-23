@@ -3,6 +3,7 @@
 #include <opencv2/highgui/highgui.hpp>
 #include <opencv2/highgui/highgui_c.h>
 #include <opencv2/imgproc/imgproc.hpp>
+#include "opencv2/imgcodecs/imgcodecs.hpp"
 
 #include <string>
 
@@ -21,7 +22,7 @@ bool ReadImageToDatumReference(const string& filename, const int label,
     const int height, const int width, const bool is_color, Datum* datum) {
   cv::Mat cv_img;
   int cv_read_flag = (is_color ? cv::IMREAD_COLOR :
-    CV_LOAD_IMAGE_GRAYSCALE);
+    cv::IMREAD_GRAYSCALE);
 
   cv::Mat cv_img_origin = cv::imread(filename, cv_read_flag);
   if (!cv_img_origin.data) {
